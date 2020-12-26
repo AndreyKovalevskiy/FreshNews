@@ -19,6 +19,7 @@
 		55AA39D9259728D6004716E0 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39D8259728D6004716E0 /* NewsTableViewCell.swift */; };
 		55AA39DD25972C6D004716E0 /* UITableView+ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39DC25972C6D004716E0 /* UITableView+ReusableCell.swift */; };
 		55AA39E125972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39E025972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift */; };
+		55AA39EA25978A50004716E0 /* Date+NewsFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39E925978A50004716E0 /* Date+NewsFormat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		55AA39D8259728D6004716E0 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		55AA39DC25972C6D004716E0 /* UITableView+ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ReusableCell.swift"; sourceTree = "<group>"; };
 		55AA39E025972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseIdentifier.swift"; sourceTree = "<group>"; };
+		55AA39E925978A50004716E0 /* Date+NewsFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+NewsFormat.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +111,8 @@
 		55AA39C22594846B004716E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				55AA39D5259721DD004716E0 /* NewsViewController.swift */,
 				55AA39D8259728D6004716E0 /* NewsTableViewCell.swift */,
+				55AA39D5259721DD004716E0 /* NewsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -133,9 +135,9 @@
 		55AA39C5259484CD004716E0 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				55AA39D125949930004716E0 /* AdditionalNewsSource.swift */,
 				55AA39C8259486DE004716E0 /* NewsItem.swift */,
 				55AA39CE2594932D004716E0 /* NewsSource.swift */,
-				55AA39D125949930004716E0 /* AdditionalNewsSource.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -143,6 +145,7 @@
 		55AA39DB25972C2B004716E0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				55AA39E925978A50004716E0 /* Date+NewsFormat.swift */,
 				55AA39DC25972C6D004716E0 /* UITableView+ReusableCell.swift */,
 				55AA39E025972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift */,
 			);
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55AA39EA25978A50004716E0 /* Date+NewsFormat.swift in Sources */,
 				55AA39D225949930004716E0 /* AdditionalNewsSource.swift in Sources */,
 				55AA39C9259486DE004716E0 /* NewsItem.swift in Sources */,
 				55AA39AB25948373004716E0 /* AppDelegate.swift in Sources */,
