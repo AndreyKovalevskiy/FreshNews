@@ -16,7 +16,3 @@ protocol NewsSourceProtocol {
     func disableSource()
 }
 
-protocol NewsViewProtocol {
-
-}
-
