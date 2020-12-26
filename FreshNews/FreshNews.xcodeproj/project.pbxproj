@@ -17,6 +17,10 @@
 		55AA39CC25949181004716E0 /* NewsSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39CB25949181004716E0 /* NewsSourceProtocol.swift */; };
 		55AA39CF2594932D004716E0 /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39CE2594932D004716E0 /* NewsSource.swift */; };
 		55AA39D225949930004716E0 /* AdditionalNewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39D125949930004716E0 /* AdditionalNewsSource.swift */; };
+		55AA39D6259721DD004716E0 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39D5259721DD004716E0 /* NewsViewController.swift */; };
+		55AA39D9259728D6004716E0 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39D8259728D6004716E0 /* NewsTableViewCell.swift */; };
+		55AA39DD25972C6D004716E0 /* UITableView+ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39DC25972C6D004716E0 /* UITableView+ReusableCell.swift */; };
+		55AA39E125972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39E025972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		55AA39CB25949181004716E0 /* NewsSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourceProtocol.swift; sourceTree = "<group>"; };
 		55AA39CE2594932D004716E0 /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
 		55AA39D125949930004716E0 /* AdditionalNewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalNewsSource.swift; sourceTree = "<group>"; };
+		55AA39D5259721DD004716E0 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		55AA39D8259728D6004716E0 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		55AA39DC25972C6D004716E0 /* UITableView+ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ReusableCell.swift"; sourceTree = "<group>"; };
+		55AA39E025972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseIdentifier.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,7 @@
 		55AA39A925948373004716E0 /* FreshNews */ = {
 			isa = PBXGroup;
 			children = (
+				55AA39DB25972C2B004716E0 /* Extensions */,
 				55AA39BF259483BE004716E0 /* News */,
 				55AA39AA25948373004716E0 /* AppDelegate.swift */,
 				55AA39AC25948373004716E0 /* SceneDelegate.swift */,
@@ -106,6 +115,8 @@
 		55AA39C22594846B004716E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				55AA39D5259721DD004716E0 /* NewsViewController.swift */,
+				55AA39D8259728D6004716E0 /* NewsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -133,6 +144,15 @@
 				55AA39D125949930004716E0 /* AdditionalNewsSource.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		55AA39DB25972C2B004716E0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				55AA39DC25972C6D004716E0 /* UITableView+ReusableCell.swift */,
+				55AA39E025972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,9 +229,13 @@
 				55AA39AF25948373004716E0 /* ViewController.swift in Sources */,
 				55AA39C9259486DE004716E0 /* NewsItem.swift in Sources */,
 				55AA39AB25948373004716E0 /* AppDelegate.swift in Sources */,
+				55AA39DD25972C6D004716E0 /* UITableView+ReusableCell.swift in Sources */,
 				55AA39CC25949181004716E0 /* NewsSourceProtocol.swift in Sources */,
+				55AA39E125972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift in Sources */,
 				55AA39AD25948373004716E0 /* SceneDelegate.swift in Sources */,
 				55AA39CF2594932D004716E0 /* NewsSource.swift in Sources */,
+				55AA39D6259721DD004716E0 /* NewsViewController.swift in Sources */,
+				55AA39D9259728D6004716E0 /* NewsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

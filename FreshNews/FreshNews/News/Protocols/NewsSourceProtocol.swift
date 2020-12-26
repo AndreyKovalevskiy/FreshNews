@@ -15,3 +15,8 @@ protocol NewsSourceProtocol {
     func enableSource()
     func disableSource()
 }
+
+protocol NewsViewProtocol {
+
+}
+
