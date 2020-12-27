@@ -7,7 +7,9 @@
 
 import UIKit
 
-class NewsViewController: UIViewController {
+class NewsViewController: UIViewController, NewsViewProtocol {
+    
+    var presenter: NewsPresenterProtocol?
     
     var newsList = [NewsItem]()
     
@@ -25,6 +27,27 @@ class NewsViewController: UIViewController {
         
         title = "Fresh news"
         view.addSubview(tableView)
+        addSettingsButton()
+    }
+    
+    func addSettingsButton() {
+        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"),
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(pressedSettingsButton))
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    @objc func pressedSettingsButton() {
+        presenter?.showSettings()
+    }
+    
+    func updateUI(with newsItems: [NewsItem]) {
+        
+    }
+    
+    func showError(message: String) {
+        
     }
     
 }
