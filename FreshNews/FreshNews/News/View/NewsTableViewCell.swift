@@ -9,11 +9,12 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
     
-    private var isOpened = false
+    var isOpened = false
     
     private lazy var newsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -26,24 +27,22 @@ class NewsTableViewCell: UITableViewCell {
     
     private lazy var detailsLabel: UILabel = {
         let detailsLabel = UILabel()
+        detailsLabel.font = UIFont.systemFont(ofSize: 14)
         detailsLabel.textColor = .label
+        detailsLabel.numberOfLines = 0
         return detailsLabel
     }()
     
-    private lazy var dateLabel: UILabel = {
-        let dateLabel = UILabel()
-        dateLabel.textColor = .label
-        dateLabel.textAlignment = .right
-        return dateLabel
-    }()
-    
-    private lazy var isReadLabel: UILabel = {
-        let isReadLabel = UILabel()
-        return isReadLabel
+    private lazy var additionalInfoLabel: UILabel = {
+        let additionalInfoLabel = UILabel()
+        additionalInfoLabel.font = UIFont.systemFont(ofSize: 12)
+        additionalInfoLabel.textColor = .systemGray
+        additionalInfoLabel.textAlignment = .right
+        return additionalInfoLabel
     }()
     
     private enum CellConstants {
-        static let imageViewSide = 40
+        static let imageViewSide = 60
         static let standartOffset: CGFloat = 5
     }
     
@@ -54,8 +53,7 @@ class NewsTableViewCell: UITableViewCell {
         contentView.addSubview(newsImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(detailsLabel)
-        contentView.addSubview(dateLabel)
-        contentView.addSubview(isReadLabel)
+        contentView.addSubview(additionalInfoLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -84,7 +82,7 @@ class NewsTableViewCell: UITableViewCell {
                                   width: labelsWidh,
                                   height: titleSize.height)
         
-        let sourceHeight = dateLabel.sizeThatFits(labelsCalcSize).height
+        let sourceHeight = additionalInfoLabel.sizeThatFits(labelsCalcSize).height
         var sourceLabelY = max(newsImageView.frame.maxY - sourceHeight,
                                titleLabel.frame.maxY + CellConstants.standartOffset)
         
@@ -92,7 +90,7 @@ class NewsTableViewCell: UITableViewCell {
             detailsLabel.isHidden = false
             let detailsSize = detailsLabel.sizeThatFits(labelsCalcSize)
             detailsLabel.frame = CGRect(x: titleLabel.frame.minX,
-                                        y: detailsLabel.frame.maxY + CellConstants.standartOffset,
+                                        y: titleLabel.frame.maxY + CellConstants.standartOffset,
                                         width: labelsWidh,
                                         height: detailsSize.height)
             
@@ -101,15 +99,11 @@ class NewsTableViewCell: UITableViewCell {
             detailsLabel.isHidden = true
         }
         
-        dateLabel.frame = CGRect(x: titleLabel.frame.minX,
+        additionalInfoLabel.frame = CGRect(x: titleLabel.frame.minX,
                                  y: sourceLabelY,
                                  width: labelsWidh,
                                  height: sourceHeight)
         
-        isReadLabel.frame = CGRect(x: dateLabel.frame.minX,
-                                   y: dateLabel.frame.maxY + CellConstants.standartOffset,
-                                   width: labelsWidh,
-                                   height: isReadLabel.sizeThatFits(labelsCalcSize).height)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -117,7 +111,7 @@ class NewsTableViewCell: UITableViewCell {
         layoutIfNeeded()
         
         return CGSize(width: size.width,
-                      height: isReadLabel.frame.maxY + CellConstants.standartOffset)
+                      height: additionalInfoLabel.frame.maxY + CellConstants.standartOffset)
     }
     
     override func prepareForReuse() {
@@ -125,12 +119,35 @@ class NewsTableViewCell: UITableViewCell {
         newsImageView.image = nil
         titleLabel.text = nil
         detailsLabel.text = nil
-        dateLabel.text = nil
-        isReadLabel.text = nil
+        additionalInfoLabel.text = nil
     }
     
     func fill(with newsItem: NewsItem) {
         titleLabel.text = newsItem.title
         detailsLabel.text = newsItem.description
+        additionalInfoLabel.text = "\(newsItem.sourceName)  \(newsItem.date.newsFormat) "
+        if newsItem.isRead {
+            additionalInfoLabel.text?.append("✓")
+        }
+        if let imageURL = newsItem.imageURL {
+            DispatchQueue.global().async {
+                self.getImage(at: imageURL) { (image) in
+                    DispatchQueue.main.async {
+                        self.newsImageView.image = image
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    func getImage(at url: URL, completion: (UIImage?) -> Void) {
+        guard let data = try? Data(contentsOf: url),
+              let image = UIImage(data: data)
+        else {
+            completion(nil)
+            return
+        }
+        completion(image)
     }
 }

@@ -28,6 +28,11 @@ class NewsViewController: UIViewController, NewsViewProtocol {
         title = "Fresh news"
         view.addSubview(tableView)
         addSettingsButton()
+        presenter?.viewDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        tableView.frame = view.bounds
     }
     
     func addSettingsButton() {
@@ -43,7 +48,8 @@ class NewsViewController: UIViewController, NewsViewProtocol {
     }
     
     func updateUI(with newsItems: [NewsItem]) {
-        
+        newsList = newsItems
+        tableView.reloadData()
     }
     
     func showError(message: String) {
@@ -58,7 +64,23 @@ extension NewsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        var newsItem = newsList[indexPath.row]
+        
+        if !newsItem.isRead {
+            newsItem.isRead = true
+        }
+        newsList[indexPath.row] = newsItem
+
+        guard let cell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell else { return }
+        cell.fill(with: newsItem)
+        cell.isOpened = !cell.isOpened
+
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
+        
 }
 
 //MARK: - UITableViewDataSource
@@ -72,6 +94,8 @@ extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let newsItem = newsList[indexPath.row]
         let cell = tableView.dequeueCell(of: NewsTableViewCell.self)!
+       // let data = try? Data(contentsOf: newsItem.imageURL!)
+        //newsItem.image = UIImage(data: data!)
         cell.fill(with: newsItem)
         return cell
     }

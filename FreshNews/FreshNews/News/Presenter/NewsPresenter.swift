@@ -14,7 +14,7 @@ class NewsPresenter: NewsPresenterProtocol {
     var router: NewsRouterProtocol?
     
     func viewDidLoad() {
-        
+        interactor?.fetchNews()
     }
     
     func showSettings() {
@@ -22,7 +22,9 @@ class NewsPresenter: NewsPresenterProtocol {
     }
     
     func newsReceived(news: [NewsItem]) {
-        
+        DispatchQueue.main.async {
+            self.view?.updateUI(with: news)
+        }
     }
     
     func newsFetchFail(source: [NewsSource]) {

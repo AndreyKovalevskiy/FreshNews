@@ -9,12 +9,12 @@ import Foundation
 
 class LentaRuNewsSource: NewsSource {
     init() {
-        super.init(name: "Lenta.ru", url: "http://lenta.ru/rss")
+        super.init(name: "Lenta.ru", url: "https://lenta.ru/rss")
     }
 }
 
 class GazetaRuNewsSource: NewsSource {
     init() {
-        super.init(name: "Gazeta.ru", url: "http://www.gazeta.ru/export/rss/lenta.xml")
+        super.init(name: "Gazeta.ru", url: "https://www.gazeta.ru/export/rss/lenta.xml")
     }
 }

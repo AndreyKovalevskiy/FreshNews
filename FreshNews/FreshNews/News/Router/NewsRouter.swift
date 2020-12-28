@@ -20,9 +20,12 @@ class NewsRouter: NewsRouterProtocol {
     func createNewsModule() {
         let view = NewsViewController()
         let presenter = NewsPresenter()
+        let interactor = NewsIteractor()
         view.presenter = presenter
         presenter.view = view
         presenter.router = self
+        presenter.interactor = interactor
+        interactor.presenter = presenter
         navigationController = UINavigationController(rootViewController: view)
     }
     

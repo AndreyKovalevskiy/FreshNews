@@ -10,6 +10,12 @@
 		558FCF292598E64800FBB5F2 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FCF282598E64800FBB5F2 /* NewsPresenter.swift */; };
 		558FCF2C2598E6EA00FBB5F2 /* NewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FCF2B2598E6EA00FBB5F2 /* NewsRouter.swift */; };
 		558FCF2F2598F52200FBB5F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FCF2E2598F52200FBB5F2 /* SettingsViewController.swift */; };
+		558FCF352598FA2800FBB5F2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FCF342598FA2800FBB5F2 /* NetworkManager.swift */; };
+		558FCF412598FB1600FBB5F2 /* NewsFetchingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FCF402598FB1600FBB5F2 /* NewsFetchingProtocol.swift */; };
+		558FCF442599007700FBB5F2 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FCF432599007700FBB5F2 /* NetworkError.swift */; };
+		558FCF4725990B2000FBB5F2 /* NewsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FCF4625990B2000FBB5F2 /* NewsParser.swift */; };
+		55906A002599E1890092C794 /* Date+FromXMLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559069FF2599E1890092C794 /* Date+FromXMLString.swift */; };
+		55906A042599E7E20092C794 /* NewsIteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55906A032599E7E20092C794 /* NewsIteractor.swift */; };
 		55AA39AB25948373004716E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39AA25948373004716E0 /* AppDelegate.swift */; };
 		55AA39AD25948373004716E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA39AC25948373004716E0 /* SceneDelegate.swift */; };
 		55AA39B425948373004716E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55AA39B325948373004716E0 /* Assets.xcassets */; };
@@ -33,6 +39,12 @@
 		558FCF282598E64800FBB5F2 /* NewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
 		558FCF2B2598E6EA00FBB5F2 /* NewsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRouter.swift; sourceTree = "<group>"; };
 		558FCF2E2598F52200FBB5F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		558FCF342598FA2800FBB5F2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		558FCF402598FB1600FBB5F2 /* NewsFetchingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFetchingProtocol.swift; sourceTree = "<group>"; };
+		558FCF432599007700FBB5F2 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		558FCF4625990B2000FBB5F2 /* NewsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsParser.swift; sourceTree = "<group>"; };
+		559069FF2599E1890092C794 /* Date+FromXMLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+FromXMLString.swift"; sourceTree = "<group>"; };
+		55906A032599E7E20092C794 /* NewsIteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsIteractor.swift; sourceTree = "<group>"; };
 		55AA39A725948373004716E0 /* FreshNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreshNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AA39AA25948373004716E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55AA39AC25948373004716E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +77,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		558FCF332598FA0800FBB5F2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				558FCF342598FA2800FBB5F2 /* NetworkManager.swift */,
+				558FCF402598FB1600FBB5F2 /* NewsFetchingProtocol.swift */,
+				558FCF432599007700FBB5F2 /* NetworkError.swift */,
+				558FCF4625990B2000FBB5F2 /* NewsParser.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		55AA399E25948373004716E0 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +107,7 @@
 		55AA39A925948373004716E0 /* FreshNews */ = {
 			isa = PBXGroup;
 			children = (
+				558FCF332598FA0800FBB5F2 /* Network */,
 				55AA39DB25972C2B004716E0 /* Extensions */,
 				55AA39BF259483BE004716E0 /* News */,
 				55AA39AA25948373004716E0 /* AppDelegate.swift */,
@@ -111,6 +135,7 @@
 		55AA39C025948444004716E0 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				55906A032599E7E20092C794 /* NewsIteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -166,6 +191,7 @@
 		55AA39DB25972C2B004716E0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				559069FF2599E1890092C794 /* Date+FromXMLString.swift */,
 				55AA39E925978A50004716E0 /* Date+NewsFormat.swift */,
 				55AA39DC25972C6D004716E0 /* UITableView+ReusableCell.swift */,
 				55AA39E025972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift */,
@@ -242,9 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				558FCF352598FA2800FBB5F2 /* NetworkManager.swift in Sources */,
 				55AA39EA25978A50004716E0 /* Date+NewsFormat.swift in Sources */,
 				55AA39D225949930004716E0 /* AdditionalNewsSource.swift in Sources */,
 				55AA39C9259486DE004716E0 /* NewsItem.swift in Sources */,
+				558FCF412598FB1600FBB5F2 /* NewsFetchingProtocol.swift in Sources */,
+				558FCF4725990B2000FBB5F2 /* NewsParser.swift in Sources */,
 				558FCF2C2598E6EA00FBB5F2 /* NewsRouter.swift in Sources */,
 				558FCF292598E64800FBB5F2 /* NewsPresenter.swift in Sources */,
 				55AA39AB25948373004716E0 /* AppDelegate.swift in Sources */,
@@ -255,9 +284,12 @@
 				55AA39AD25948373004716E0 /* SceneDelegate.swift in Sources */,
 				55AA39F32597A31D004716E0 /* NewsPresenterProtocol.swift in Sources */,
 				55AA39CF2594932D004716E0 /* NewsSource.swift in Sources */,
+				55906A042599E7E20092C794 /* NewsIteractor.swift in Sources */,
+				558FCF442599007700FBB5F2 /* NetworkError.swift in Sources */,
 				55AA39F92597A373004716E0 /* NewsRouterProtocol.swift in Sources */,
 				55AA39D6259721DD004716E0 /* NewsViewController.swift in Sources */,
 				55AA39F62597A348004716E0 /* NewsIteractorProtocol.swift in Sources */,
+				55906A002599E1890092C794 /* Date+FromXMLString.swift in Sources */,
 				55AA39D9259728D6004716E0 /* NewsTableViewCell.swift in Sources */,
 				558FCF2F2598F52200FBB5F2 /* SettingsViewController.swift in Sources */,
 			);
