@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol NewsFetchingProtocol {
-    func fetchNews(completion: @escaping (([NewsItem]?, Error?) -> ()))
+protocol NewsLoadingProtocol {
+    func loadNews(completion: @escaping (([NewsItem]?, Error?) -> ()))
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkManager: NewsFetchingProtocol {
+class NetworkManager: NewsLoadingProtocol {
     
     var newsSource: NewsSourceProtocol
     
@@ -15,7 +15,7 @@ class NetworkManager: NewsFetchingProtocol {
         self.newsSource = newsSource
     }
     
-    func fetchNews(completion: @escaping (([NewsItem]?, Error?) -> ())) {
+    func loadNews(completion: @escaping (([NewsItem]?, Error?) -> ())) {
         
         guard let url = URL(string: newsSource.url) else {
             completion(nil, NetworkError.invalidURL)
