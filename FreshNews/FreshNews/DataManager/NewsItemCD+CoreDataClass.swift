@@ -14,12 +14,17 @@ public class NewsItemCD: NSManagedObject {
 
     func convertToNewsItem() -> NewsItem {
 
+        var image: UIImage?
+        if let data = self.image {
+            image = UIImage(data: data)
+        }
+        
         return NewsItem(title: self.title!,
                         sourceName: self.sourceName!,
                         sourceURL: self.sourceURL!,
                         description: self.descriptionArticle!,
                         date: self.date!,
-                        image: UIImage(data: self.image!)!,
+                        image: image,
                         imageURL: self.imageURL,
                         isRead: self.isRead)
     }
@@ -30,8 +35,8 @@ public class NewsItemCD: NSManagedObject {
         sourceURL = newsItem.sourceURL
         descriptionArticle = newsItem.description
         date = newsItem.date
-        image = newsItem.image?.pngData()
         imageURL = newsItem.imageURL
         isRead = newsItem.isRead
     }
+    
 }

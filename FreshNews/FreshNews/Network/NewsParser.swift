@@ -79,7 +79,7 @@ class NewsParser: NSObject, XMLParserDelegate {
                                       description: descriptionArticle!,
                                       date: Date.fromXMLDateString(dateString: date!)!,
                                       image: nil,
-                                      imageURL: URL(string: imageURL!)!,
+                                      imageURL: imageURL == nil ? nil : URL(string: imageURL!)!,
                                       isRead: false))
             
         }
@@ -89,7 +89,6 @@ class NewsParser: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, foundCDATA CDATABlock: Data) {
         if currentElement == "description" {
             descriptionArticle = String.init(data: CDATABlock, encoding: .utf8)
-            
             
         }
     }

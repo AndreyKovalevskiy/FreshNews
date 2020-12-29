@@ -27,6 +27,14 @@ class NewsPresenter: NewsPresenterProtocol {
         }
     }
     
+    func update(newsItem: NewsItem) {
+        interactor?.updateInDataBase(newsItem: newsItem)
+    }
+    
+    func showTimerSettings() {
+        router?.showTimerSettings()
+    }
+    
     func newsFetchFail(source: [NewsSource]) {
         
     }

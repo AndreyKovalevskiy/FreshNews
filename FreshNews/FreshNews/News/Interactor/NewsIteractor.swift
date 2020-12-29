@@ -19,29 +19,44 @@ class NewsIteractor: NewsIteractorProtocol {
     
     func loadNews() {
         
-        sorceManager.allRecources().forEach { (NewsSource) in
+        var newsItems = [NewsItem]()
+        let queue = DispatchQueue(label: "com.load.news",
+                                  qos: .background,
+                                  attributes: .concurrent)
+        let group = DispatchGroup()
+
+        queue.async(group: group) {
+        
+            self.sorceManager.allRecources().forEach { (NewsSource) in
             NewsSource.isEnabled = true
         }
         
-        let sources = sorceManager.isEnebledSources()
-        var newsItems = [NewsItem]()
+            let sources = self.sorceManager.isEnebledSources()
+       
         
         for source in sources {
+            group.enter()
             let networkManager = NetworkManager(newsSource: source)
             networkManager.loadNews { (items, error) in
                 if let items = items {
                     newsItems.append(contentsOf: items)
                 }
+                group.leave()
             }
         }
+        }
         
-        let sortedNewsItems = newsItems.sorted { $0.date > $1.date }
-        storeManager.save(news: sortedNewsItems)
-        fetchNews()
+        group.notify(queue: .main) {
+            let sortedNewsItems = newsItems.sorted { $0.date > $1.date }
+            self.storeManager.save(news: sortedNewsItems)
+            self.fetchNews()
+        }
+        
     }
     
     func fetchNews() {
-        storeManager.fetchNews(from: sorceManager.isEnebledSources()) { (items) in
+        storeManager.fetchNews(from: sorceManager.isEnebledSources()) { [weak self] (items) in
+            guard let self = self else { return }
             if items.isEmpty {
                 self.loadNews()
             } else {
@@ -52,5 +67,8 @@ class NewsIteractor: NewsIteractorProtocol {
         }
     }
     
+    func updateInDataBase(newsItem: NewsItem) {
+        storeManager.save(news: [newsItem])
+    }
     
 }

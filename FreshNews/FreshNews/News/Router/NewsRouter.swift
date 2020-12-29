@@ -11,6 +11,9 @@ import Foundation
 class NewsRouter: NewsRouterProtocol {
     
     var navigationController: UINavigationController?
+    let view = NewsViewController()
+    let presenter = NewsPresenter()
+    let interactor = NewsIteractor()
     
     init() {
         createNewsModule()
@@ -18,9 +21,6 @@ class NewsRouter: NewsRouterProtocol {
     
     
     func createNewsModule() {
-        let view = NewsViewController()
-        let presenter = NewsPresenter()
-        let interactor = NewsIteractor()
         view.presenter = presenter
         presenter.view = view
         presenter.router = self
@@ -31,11 +31,13 @@ class NewsRouter: NewsRouterProtocol {
     
     func showSetings() {
         let settingsVC = SettingsViewController()
+        settingsVC.presenter = presenter
         navigationController?.pushViewController(settingsVC, animated: true)
     }
     
     func showTimerSettings() {
-        
+        let timerSettingsVC = UpdateTimeSettingsViewController()
+        navigationController?.pushViewController(timerSettingsVC, animated: true)
     }
     
     

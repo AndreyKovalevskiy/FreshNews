@@ -12,7 +12,6 @@ protocol NewsSourceProtocol {
     var url: String { get }
     var isEnabled: Bool { get set }
     
-    func enableSource()
-    func disableSource()
+    func toggle()
 }
 

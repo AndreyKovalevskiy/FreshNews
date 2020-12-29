@@ -11,4 +11,5 @@ protocol NewsIteractorProtocol {
     var presenter: NewsPresenterProtocol? { get set }
     
     func fetchNews()
+    func updateInDataBase(newsItem: NewsItem)
 }

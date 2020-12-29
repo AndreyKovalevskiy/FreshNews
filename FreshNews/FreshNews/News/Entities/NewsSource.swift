@@ -27,11 +27,8 @@ class NewsSource: NewsSourceProtocol {
         self.url = url
     }
     
-    func enableSource() {
-        isEnabled = true
+    @objc func toggle() {
+        isEnabled.toggle()
     }
     
-    func disableSource() {
-        isEnabled = false
-    }
 }

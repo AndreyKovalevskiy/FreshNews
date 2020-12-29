@@ -70,6 +70,7 @@ extension NewsViewController: UITableViewDelegate {
         
         if !newsItem.isRead {
             newsItem.isRead = true
+            presenter?.update(newsItem: newsItem)
         }
         newsList[indexPath.row] = newsItem
 
