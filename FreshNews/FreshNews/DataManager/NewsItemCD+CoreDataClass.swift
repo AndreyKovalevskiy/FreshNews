@@ -36,7 +36,8 @@ public class NewsItemCD: NSManagedObject {
         descriptionArticle = newsItem.description
         date = newsItem.date
         imageURL = newsItem.imageURL
-        isRead = newsItem.isRead
+        if !isRead {
+            isRead = newsItem.isRead
+        }
     }
-    
 }
