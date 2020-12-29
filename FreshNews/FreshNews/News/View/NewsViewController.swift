@@ -10,8 +10,9 @@ import UIKit
 class NewsViewController: UIViewController, NewsViewProtocol {
     
     var presenter: NewsPresenterProtocol?
-    
     var newsList = [NewsItem]()
+    
+    var timer: Timer?
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: view.bounds)
@@ -29,6 +30,13 @@ class NewsViewController: UIViewController, NewsViewProtocol {
         view.addSubview(tableView)
         addSettingsButton()
         presenter?.viewDidLoad()
+        createTimer()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updatingTimeChanged),
+                                               name: .updatingTimeChanged,
+                                               object: nil
+        )
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,7 +73,7 @@ extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         var newsItem = newsList[indexPath.row]
         
         if !newsItem.isRead {
@@ -73,15 +81,15 @@ extension NewsViewController: UITableViewDelegate {
             presenter?.update(newsItem: newsItem)
         }
         newsList[indexPath.row] = newsItem
-
+        
         guard let cell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell else { return }
         cell.fill(with: newsItem)
         cell.isOpened = !cell.isOpened
-
+        
         tableView.beginUpdates()
         tableView.endUpdates()
     }
-        
+    
 }
 
 //MARK: - UITableViewDataSource
@@ -95,10 +103,44 @@ extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let newsItem = newsList[indexPath.row]
         let cell = tableView.dequeueCell(of: NewsTableViewCell.self)!
-       // let data = try? Data(contentsOf: newsItem.imageURL!)
+        // let data = try? Data(contentsOf: newsItem.imageURL!)
         //newsItem.image = UIImage(data: data!)
         cell.fill(with: newsItem)
         return cell
     }
     
+}
+
+// MARK: - Timer
+extension NewsViewController {
+    
+    func createTimer() {
+        
+        if timer == nil {
+            
+            let timeInterval = TimerManager().currentUpdatingTime
+            let timer = Timer.scheduledTimer(timeInterval: TimeInterval(timeInterval),
+                                             target: self,
+                                             selector: #selector(updateNews),
+                                             userInfo: nil,
+                                             repeats: true)
+            timer.tolerance = 0.1
+            RunLoop.current.add(timer, forMode: .common)
+            self.timer = timer
+        }
+    }
+    
+    @objc func updateNews() {
+        presenter?.loadNews()
+    }
+    
+    func cancelTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    @objc func updatingTimeChanged() {
+        cancelTimer()
+        createTimer()
+    }
 }

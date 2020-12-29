@@ -35,10 +35,11 @@ class NewsPresenter: NewsPresenterProtocol {
         router?.showTimerSettings()
     }
     
+    func loadNews() {
+        interactor?.loadNews()
+    }
+    
     func newsFetchFail(source: [NewsSource]) {
         
     }
-    
-    
-    
 }

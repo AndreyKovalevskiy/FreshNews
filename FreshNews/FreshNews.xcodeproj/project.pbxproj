@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		556C528B259B5A5900ED902D /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556C528A259B5A5900ED902D /* TimerManager.swift */; };
 		556C528F259B822A00ED902D /* UpdateTimeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556C528E259B822A00ED902D /* UpdateTimeSettingsViewController.swift */; };
+		556C5295259BDB3100ED902D /* NatificationName+UpdatingTimeChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556C5294259BDB3100ED902D /* NatificationName+UpdatingTimeChanged.swift */; };
 		558FCF292598E64800FBB5F2 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FCF282598E64800FBB5F2 /* NewsPresenter.swift */; };
 		558FCF2C2598E6EA00FBB5F2 /* NewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FCF2B2598E6EA00FBB5F2 /* NewsRouter.swift */; };
 		558FCF2F2598F52200FBB5F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FCF2E2598F52200FBB5F2 /* SettingsViewController.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		556C528A259B5A5900ED902D /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		556C528E259B822A00ED902D /* UpdateTimeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTimeSettingsViewController.swift; sourceTree = "<group>"; };
+		556C5294259BDB3100ED902D /* NatificationName+UpdatingTimeChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NatificationName+UpdatingTimeChanged.swift"; sourceTree = "<group>"; };
 		558FCF282598E64800FBB5F2 /* NewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
 		558FCF2B2598E6EA00FBB5F2 /* NewsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRouter.swift; sourceTree = "<group>"; };
 		558FCF2E2598F52200FBB5F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				55AA39E925978A50004716E0 /* Date+NewsFormat.swift */,
 				55AA39DC25972C6D004716E0 /* UITableView+ReusableCell.swift */,
 				55AA39E025972E82004716E0 /* UITableViewCell+ReuseIdentifier.swift */,
+				556C5294259BDB3100ED902D /* NatificationName+UpdatingTimeChanged.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				55AA39EA25978A50004716E0 /* Date+NewsFormat.swift in Sources */,
 				556C528F259B822A00ED902D /* UpdateTimeSettingsViewController.swift in Sources */,
 				55906A1A259A780B0092C794 /* StoreManager.swift in Sources */,
+				556C5295259BDB3100ED902D /* NatificationName+UpdatingTimeChanged.swift in Sources */,
 				55AA39D225949930004716E0 /* AdditionalNewsSource.swift in Sources */,
 				556C528B259B5A5900ED902D /* TimerManager.swift in Sources */,
 				55AA39C9259486DE004716E0 /* NewsItem.swift in Sources */,

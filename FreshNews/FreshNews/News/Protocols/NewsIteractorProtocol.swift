@@ -12,4 +12,5 @@ protocol NewsIteractorProtocol {
     
     func fetchNews()
     func updateInDataBase(newsItem: NewsItem)
+    func loadNews()
 }

@@ -17,6 +17,7 @@ protocol NewsPresenterProtocol {
     func showSettings()
     func showTimerSettings()
     func update(newsItem: NewsItem)
+    func loadNews()
     
     //Iteractor -> Presenter
     func newsReceived(news: [NewsItem])

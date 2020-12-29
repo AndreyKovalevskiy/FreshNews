@@ -9,13 +9,19 @@ import Foundation
 
 class TimerManager {
     
+    var updatingTimeChanged: Bool?
     
     var currentUpdatingTime: Int {
         get {
-            return UserDefaults.standard.integer(forKey: "currentUpdatingTime")
+            let time = UserDefaults.standard.integer(forKey: "currentUpdatingTime")
+            if time == 0 {
+                return TimerManager.TimeUpdating.veryFast.rawValue
+            }
+            return time
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "currentUpdatingTime")
+            NotificationCenter.default.post(name: .updatingTimeChanged, object: nil)
         }
     }
     
