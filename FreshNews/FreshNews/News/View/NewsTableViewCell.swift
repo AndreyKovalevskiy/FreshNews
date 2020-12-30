@@ -123,7 +123,6 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     func fill(with newsItem: NewsItem) {
-        newsImageView.image = UIImage(named: "Placeholder")
         titleLabel.text = newsItem.title
         detailsLabel.text = newsItem.description
         additionalInfoLabel.text = "\(newsItem.sourceName)  \(newsItem.date.newsFormat)  "
@@ -146,7 +145,7 @@ class NewsTableViewCell: UITableViewCell {
         guard let data = try? Data(contentsOf: url),
               let image = UIImage(data: data)
         else {
-            completion(nil)
+            completion(UIImage(named: "Placeholder"))
             return
         }
         completion(image)
