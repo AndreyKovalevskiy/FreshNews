@@ -103,8 +103,6 @@ extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let newsItem = newsList[indexPath.row]
         let cell = tableView.dequeueCell(of: NewsTableViewCell.self)!
-        // let data = try? Data(contentsOf: newsItem.imageURL!)
-        //newsItem.image = UIImage(data: data!)
         cell.fill(with: newsItem)
         return cell
     }
@@ -112,6 +110,7 @@ extension NewsViewController: UITableViewDataSource {
 }
 
 // MARK: - Timer
+
 extension NewsViewController {
     
     func createTimer() {

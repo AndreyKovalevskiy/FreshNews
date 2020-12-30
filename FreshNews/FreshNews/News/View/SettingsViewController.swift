@@ -10,8 +10,7 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     var presenter: NewsPresenterProtocol?
-    let sourceManager = SourceManager()
-    
+    let sourceManager = SourceManager.shared
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: view.bounds)

@@ -25,10 +25,10 @@ class NewsSource: NewsSourceProtocol {
     init(name: String, url: String) {
         self.name = name
         self.url = url
+        isEnabled = true
     }
     
     @objc func toggle() {
         isEnabled.toggle()
     }
-    
 }

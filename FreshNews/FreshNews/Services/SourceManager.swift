@@ -9,9 +9,11 @@ import Foundation
 
 class SourceManager {
     
+    static let shared = SourceManager()
+    
     private var sourceList: [NewsSource]
     
-    init() {
+    private init() {
         sourceList = [LentaRuNewsSource(),
                       GazetaRuNewsSource()]
     }
@@ -22,5 +24,5 @@ class SourceManager {
     
     func isEnebledSources() -> [NewsSource] {
         return sourceList.filter { $0.isEnabled }
-        }
+    }
 }

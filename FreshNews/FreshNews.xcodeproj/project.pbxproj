@@ -148,11 +148,11 @@
 		55AA39A925948373004716E0 /* FreshNews */ = {
 			isa = PBXGroup;
 			children = (
-				55906A1F259A8A8F0092C794 /* Services */,
 				55906A09259A43930092C794 /* DataManager */,
-				558FCF332598FA0800FBB5F2 /* Network */,
 				55AA39DB25972C2B004716E0 /* Extensions */,
+				558FCF332598FA0800FBB5F2 /* Network */,
 				55AA39BF259483BE004716E0 /* News */,
+				55906A1F259A8A8F0092C794 /* Services */,
 				55AA39AA25948373004716E0 /* AppDelegate.swift */,
 				55AA39AC25948373004716E0 /* SceneDelegate.swift */,
 				55AA39B325948373004716E0 /* Assets.xcassets */,

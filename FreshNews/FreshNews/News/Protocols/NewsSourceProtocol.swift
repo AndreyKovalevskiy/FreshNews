@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NewsSourceProtocol {
+@objc protocol NewsSourceProtocol {
     var name: String { get }
     var url: String { get }
     var isEnabled: Bool { get set }

@@ -14,7 +14,7 @@ class NewsIteractor: NewsIteractorProtocol {
     
     init() {
         storeManager = StoreManager()
-        sorceManager = SourceManager()
+        sorceManager = SourceManager.shared
     }
     
     func loadNews() {
@@ -24,26 +24,21 @@ class NewsIteractor: NewsIteractorProtocol {
                                   qos: .background,
                                   attributes: .concurrent)
         let group = DispatchGroup()
-
+        
         queue.async(group: group) {
-        
-            self.sorceManager.allRecources().forEach { (NewsSource) in
-            NewsSource.isEnabled = true
-        }
-        
+            
             let sources = self.sorceManager.isEnebledSources()
-       
-        
-        for source in sources {
-            group.enter()
-            let networkManager = NetworkManager(newsSource: source)
-            networkManager.loadNews { (items, error) in
-                if let items = items {
-                    newsItems.append(contentsOf: items)
+            
+            for source in sources {
+                group.enter()
+                let networkManager = NetworkManager(newsSource: source)
+                networkManager.loadNews { (items, error) in
+                    if let items = items {
+                        newsItems.append(contentsOf: items)
+                    }
+                    group.leave()
                 }
-                group.leave()
             }
-        }
         }
         
         group.notify(queue: .main) {
@@ -51,7 +46,6 @@ class NewsIteractor: NewsIteractorProtocol {
             self.storeManager.save(news: sortedNewsItems)
             self.fetchNews()
         }
-        
     }
     
     func fetchNews() {
@@ -62,13 +56,10 @@ class NewsIteractor: NewsIteractorProtocol {
             } else {
                 self.presenter?.newsReceived(news: items)
             }
-            
-            
         }
     }
     
     func updateInDataBase(newsItem: NewsItem) {
         storeManager.save(news: [newsItem])
     }
-    
 }

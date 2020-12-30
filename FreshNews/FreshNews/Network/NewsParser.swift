@@ -56,7 +56,11 @@ class NewsParser: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         switch currentElement {
         case "title":
-            title = string
+            if title == nil {
+                title = string.trimmingCharacters(in: .whitespacesAndNewlines)
+            } else {
+                title = title! + string.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
         case "description":
             if descriptionArticle != nil {
                 break

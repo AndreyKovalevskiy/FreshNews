@@ -15,7 +15,7 @@ class TimerManager {
         get {
             let time = UserDefaults.standard.integer(forKey: "currentUpdatingTime")
             if time == 0 {
-                return TimerManager.TimeUpdating.veryFast.rawValue
+                return TimerManager.TimeUpdating.medium.rawValue
             }
             return time
         }
