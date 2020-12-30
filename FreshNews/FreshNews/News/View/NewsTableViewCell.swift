@@ -123,9 +123,10 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     func fill(with newsItem: NewsItem) {
+        newsImageView.image = UIImage(named: "Placeholder")
         titleLabel.text = newsItem.title
         detailsLabel.text = newsItem.description
-        additionalInfoLabel.text = "\(newsItem.sourceName)  \(newsItem.date.newsFormat) "
+        additionalInfoLabel.text = "\(newsItem.sourceName)  \(newsItem.date.newsFormat)  "
         if newsItem.isRead {
             additionalInfoLabel.text?.append("✓")
         }
