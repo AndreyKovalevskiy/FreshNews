@@ -20,8 +20,8 @@ class NewsIteractor: NewsIteractorProtocol {
     func loadNews() {
         
         var newsItems = [NewsItem]()
-        let queue = DispatchQueue(label: "com.load.news",
-                                  qos: .background,
+        let queue = DispatchQueue(label: "loadNews",
+                                  qos: .default,
                                   attributes: .concurrent)
         let group = DispatchGroup()
         
