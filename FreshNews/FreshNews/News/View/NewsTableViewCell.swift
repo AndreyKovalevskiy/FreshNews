@@ -11,10 +11,13 @@ class NewsTableViewCell: UITableViewCell {
     
     var isOpened = false
     
+    private var imageURL: URL?
+    
     private lazy var newsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "Placeholder")
         return imageView
     }()
     
@@ -116,38 +119,29 @@ class NewsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        newsImageView.image = nil
+        newsImageView.image = UIImage(named: "Placeholder")
         titleLabel.text = nil
         detailsLabel.text = nil
         additionalInfoLabel.text = nil
     }
     
     func fill(with newsItem: NewsItem) {
+        self.imageURL = newsItem.imageURL
         titleLabel.text = newsItem.title
         detailsLabel.text = newsItem.description
         additionalInfoLabel.text = "\(newsItem.sourceName)  \(newsItem.date.newsFormat)  "
         if newsItem.isRead {
             additionalInfoLabel.text?.append("✓")
         }
-        if let imageURL = newsItem.imageURL {
-            DispatchQueue.global().async {
-                self.getImage(at: imageURL) { (image) in
-                    DispatchQueue.main.async {
-                        self.newsImageView.image = image
-                    }
+        DispatchQueue.global().async {
+            if let imageURL = newsItem.imageURL,
+               let data = try? Data(contentsOf: imageURL),
+               let image = UIImage(data: data),
+               self.imageURL == imageURL {
+                DispatchQueue.main.async {
+                    self.newsImageView.image = image
                 }
             }
-
         }
-    }
-    
-    func getImage(at url: URL, completion: (UIImage?) -> Void) {
-        guard let data = try? Data(contentsOf: url),
-              let image = UIImage(data: data)
-        else {
-            completion(UIImage(named: "Placeholder"))
-            return
-        }
-        completion(image)
     }
 }
