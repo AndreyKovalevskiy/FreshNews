@@ -28,6 +28,7 @@ class NewsViewController: UIViewController, NewsViewProtocol {
         
         title = "Fresh news"
         view.addSubview(tableView)
+        configureRefreshControl()
         addSettingsButton()
         presenter?.viewDidLoad()
         createTimer()
@@ -43,12 +44,25 @@ class NewsViewController: UIViewController, NewsViewProtocol {
         tableView.frame = view.bounds
     }
     
+    func configureRefreshControl () {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self,
+                                 action: #selector(handleRefreshControl),
+                                 for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
     func addSettingsButton() {
         let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"),
                                             style: .plain,
                                             target: self,
                                             action: #selector(pressedSettingsButton))
         navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    @objc func handleRefreshControl() {
+        presenter?.loadNews()
+        tableView.refreshControl?.endRefreshing()
     }
     
     @objc func pressedSettingsButton() {
